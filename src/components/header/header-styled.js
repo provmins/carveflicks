@@ -6,7 +6,6 @@ const HeaderContainer = styled.header`
   z-index: 2;
   width: 100vw;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.2);
 `;
 
 const HeaderMobile = styled.nav`
