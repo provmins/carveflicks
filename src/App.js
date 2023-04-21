@@ -1,16 +1,16 @@
-import { BrowserRouter } from 'react-router-dom';
-import './App.css';
 import Header from './components/header/Header';
 import GlobalFonts from './styles/GlobalFonts';
 import GlobalStyles from './styles/GlobalStyles';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Provider store={store}>
       <GlobalStyles />
       <GlobalFonts />
       <Header />
-    </BrowserRouter>
+    </Provider>
   );
 }
 
