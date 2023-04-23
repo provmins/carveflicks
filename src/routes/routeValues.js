@@ -1,4 +1,4 @@
-import { Main, Login } from '../pages';
+import { Main, AccountPage } from '../pages';
 
 // Router 정보
 const ROUTER = {
@@ -6,9 +6,9 @@ const ROUTER = {
     path: '/',
     element: Main
   },
-  AUTH_LOGIN: {
-    path: '/auth/login',
-    element: Login
+  AUTH_ACCOUNT: {
+    path: '/auth/:flag',
+    element: AccountPage
   }
 };
 

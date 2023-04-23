@@ -4,7 +4,7 @@ import reset from 'styled-reset';
 const GlobalStyles = createGlobalStyle`
   ${reset};
   body {
-    background-color: #1C1C27;
+    background: #11092f;
     font-family: 'NotoKR';
     font-weight: 300;
     box-sizing: border-box;
@@ -22,6 +22,19 @@ const GlobalStyles = createGlobalStyle`
     box-shadow:none;
     overflow:visible;
     cursor: pointer;
+  }
+  input {
+    font-family: 'NotoKR';
+    font-weight: 300;
+    &::-webkit-input-placeholder {
+      color: #ccc;
+    }
+  }
+  input[type=password] {
+    letter-spacing: 3px;
+    &::-webkit-input-placeholder {
+      letter-spacing: 0;
+    }
   }
 `;
 

@@ -33,7 +33,9 @@ const Popup = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">회원가입</Link>
+              <Link to="/auth/register" onClick={() => dispatch(isOpen())}>
+                회원가입
+              </Link>
             </li>
           </ul>
         </PBottomBox>
