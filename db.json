@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "email": "elice@test.com",
+      "password": "$2a$10$e9XIM10tqR7Ght7Hf5S6EewvdcO.8pYN.FEJxrz7.ZN7SJkmYFOdC",
+      "id": 1
+    },
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$sclbSXfGyRiBMA0rFHvukOkDT/h2oFFMkvPcG6jjUraDBZInU1Yoi",
+      "id": 2
+    },
+    {
+      "email": "d@test.com",
+      "password": "$2a$10$v1PmpO1nOQOi.C5IDgfaIO7FU2aTNBBvtmXqQmS4bmUdUm8M2yGWS",
+      "id": 3
+    }
+  ],
+  "todos": []
+}

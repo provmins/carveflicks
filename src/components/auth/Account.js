@@ -1,21 +1,41 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { AccountContainer, AccountForm, AccountInputBox, AccountMessage } from './account-styled';
+import {
+  AccountContainer,
+  AccountForm,
+  AccountInputBox,
+  AccountMessage,
+  Button
+} from './account-styled';
 import { imgRegister, imgLogin } from '../../assets/images';
+import axios from 'axios';
+import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { currentUser } from '../../store/reducer/userSlice';
+
 const Account = ({ flag }) => {
+  const [cookies, setCookie] = useCookies(['token']);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     email: {
       value: '',
-      message: ''
+      message: '',
+      check: false
     },
     password: {
       value: '',
-      message: ''
+      message: '',
+      check: false
     },
     passwordConfirm: {
       value: '',
-      message: ''
+      message: '',
+      check: false
     }
   });
+
+  const { email, password, passwordConfirm } = form;
 
   // 유효성 검사
   const onChangeEmail = useCallback(
@@ -29,13 +49,14 @@ const Account = ({ flag }) => {
           ...form,
           email: {
             value: emailValue,
-            message: '이메일 형식이 올바르지 않습니다. 다시 입력해주세요.'
+            message: '이메일 형식이 올바르지 않습니다. 다시 입력해주세요.',
+            check: false
           }
         });
       } else {
         setForm({
           ...form,
-          email: { value: emailValue, message: '' }
+          email: { value: emailValue, message: '', check: true }
         });
       }
     },
@@ -52,7 +73,8 @@ const Account = ({ flag }) => {
           ...form,
           password: {
             value: passwordValue,
-            message: '총 8자 이상 / 숫자, 영문, 특수문자를 조합하여 입력해주세요.'
+            message: '총 8자 이상 / 숫자, 영문, 특수문자를 조합하여 입력해주세요.',
+            check: false
           }
         });
       } else {
@@ -60,7 +82,8 @@ const Account = ({ flag }) => {
           ...form,
           password: {
             value: passwordValue,
-            message: ''
+            message: '',
+            check: true
           }
         });
       }
@@ -76,7 +99,8 @@ const Account = ({ flag }) => {
           ...form,
           passwordConfirm: {
             value: passwordValue,
-            message: '비밀번호가 일치하지 않습니다. 다시 입력해주세요.'
+            message: '비밀번호가 일치하지 않습니다. 다시 입력해주세요.',
+            check: false
           }
         });
       } else {
@@ -84,7 +108,8 @@ const Account = ({ flag }) => {
           ...form,
           passwordConfirm: {
             value: passwordValue,
-            message: ''
+            message: '',
+            check: true
           }
         });
       }
@@ -98,18 +123,42 @@ const Account = ({ flag }) => {
     setForm({
       email: {
         value: '',
-        message: ''
+        message: '',
+        check: false
       },
       password: {
         value: '',
-        message: ''
+        message: '',
+        check: false
       },
       passwordConfirm: {
         value: '',
-        message: ''
+        message: '',
+        check: flag === 'register' ? false : true
       }
     });
   }, [flag]);
+
+  // 회원가입, 로그인 기능
+  const onSubmit = async params => {
+    try {
+      const response = await axios.post(`/${params}`, {
+        email: form.email.value,
+        password: form.password.value
+      });
+      const { accessToken, user } = response.data;
+      if (params === 'login') {
+        setCookie('token', accessToken, { path: '/' });
+        navigate('/');
+        dispatch(currentUser({ id: user.id, email: user.email }));
+      } else {
+        alert('Welcome to Carveflicks!');
+        navigate('/');
+      }
+    } catch (err) {
+      alert('아이디 또는 비밀번호를 잘못 입력했습니다.\n입력하신 내용을 다시 확인해주세요.');
+    }
+  };
 
   return (
     <AccountContainer>
@@ -123,10 +172,10 @@ const Account = ({ flag }) => {
             id="email"
             onChange={onChangeEmail}
             placeholder={flag === 'register' ? 'customer@gmail.com' : ''}
-            value={form.email.value}
+            value={email.value}
           />
         </AccountInputBox>
-        <AccountMessage>{form.email.message}</AccountMessage>
+        <AccountMessage>{email.message}</AccountMessage>
         <AccountInputBox>
           <label htmlFor="password">비밀번호</label>
           <input
@@ -134,10 +183,10 @@ const Account = ({ flag }) => {
             id="password"
             onChange={onChangePassword}
             placeholder={flag === 'register' ? '8자 이상 영문, 숫자, 특수문자 포함' : ''}
-            value={form.password.value}
+            value={password.value}
           />
         </AccountInputBox>
-        <AccountMessage>{form.password.message}</AccountMessage>
+        <AccountMessage>{password.message}</AccountMessage>
         {flag === 'register' && (
           <>
             <AccountInputBox>
@@ -147,13 +196,26 @@ const Account = ({ flag }) => {
                 id="passwordConfirm"
                 onChange={onChangePasswordConfirm}
                 placeholder="비밀번호를 한번 더 입력해주세요."
-                value={form.passwordConfirm.value}
+                value={passwordConfirm.value}
               />
             </AccountInputBox>
-            <AccountMessage>{form.passwordConfirm.message}</AccountMessage>
+            <AccountMessage>{passwordConfirm.message}</AccountMessage>
           </>
         )}
-        {flag === 'register' ? <button>회원가입</button> : <button>로그인</button>}
+
+        <Button
+          onClick={e => {
+            e.preventDefault();
+            onSubmit(flag);
+          }}
+          disabled={
+            email.check === true && password.check === true && passwordConfirm.check === true
+              ? false
+              : true
+          }
+        >
+          {flag === 'register' ? '회원가입' : '로그인'}
+        </Button>
       </AccountForm>
     </AccountContainer>
   );

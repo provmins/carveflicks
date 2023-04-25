@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const AccountContainer = styled.div`
   width: 100%;
@@ -26,22 +26,35 @@ export const AccountForm = styled.form`
   box-sizing: border-box;
 
   p {
+    min-height: 12px;
     margin-bottom: 32px;
   }
+`;
 
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 15px;
-    margin-top: 32px;
-    color: #333;
-    font-size: 16px;
-    font-weight: 800;
-    background-color: #ebcf71;
-    border-radius: 3px;
-  }
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px;
+  margin-top: 32px;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  border-radius: 3px;
+  ${props =>
+    props.disabled
+      ? css`
+          background-color: #eee;
+          color: #fff;
+          cursor: initial;
+        `
+      : css`
+          background-color: #ebcf71;
+          color: #333;
+          cursor: pointer;
+        `}
 `;
 
 export const AccountInputBox = styled.div`
