@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { PopupContainer, PopupHeader, PopupContent, PTopBox, PBottomBox } from './popup-styled';
 import { imgInfo } from '../../../assets/images';
 import { useDispatch, useSelector } from 'react-redux';
 import { isOpen } from '../../../store/reducer/popupSlice';
-import { resetUser } from '../../../store/reducer/userSlice';
+import { removeUser } from '../../../store/reducer/userSlice';
 import { useCookies } from 'react-cookie';
 
 const Popup = () => {
@@ -17,7 +17,7 @@ const Popup = () => {
     <PopupContainer active={open}>
       <PopupHeader>
         <PTopBox>
-          <p>{email !== '' ? `${email}님 환영합니다.` : '로그인 해주세요 :)'}</p>
+          <p>{email !== '' ? `${email}님 환영합니다 :)` : '로그인 해주세요 :)'}</p>
           <ul>
             <li>
               <Link to="/">
@@ -39,7 +39,7 @@ const Popup = () => {
                     // 로그아웃 시 쿠키 삭제
                     removeCookie('token');
                     dispatch(isOpen());
-                    dispatch(resetUser());
+                    dispatch(removeUser());
                   }}
                 >
                   로그아웃
