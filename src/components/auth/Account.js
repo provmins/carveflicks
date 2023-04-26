@@ -156,7 +156,13 @@ const Account = ({ flag }) => {
         navigate('/');
       }
     } catch (err) {
-      alert('아이디 또는 비밀번호를 잘못 입력했습니다.\n입력하신 내용을 다시 확인해주세요.');
+      if (err.response.status === 400) {
+        params === 'login'
+          ? alert('아이디 또는 비밀번호를 잘못 입력했습니다.\n입력하신 내용을 다시 확인해주세요.')
+          : alert('가입된 이메일 입니다.\n다른 이메일로 입력해주세요.');
+      } else if (err.response.status === 500) {
+        alert('서버 점검중입니다.');
+      }
     }
   };
 
