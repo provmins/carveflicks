@@ -13,7 +13,7 @@ const HeaderMobile = styled.nav`
   justify-content: space-between;
   align-items: center;
   img {
-    height: 26px;
+    height: 22px;
   }
 `;
 
