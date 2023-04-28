@@ -27,12 +27,21 @@ const SlideImage = styled.div`
   `}
   border-radius: 5px;
 
-  & > div {
+  & > div:first-child {
     position: absolute;
     bottom: 0.5rem;
     width: 100%;
     font-size: 0.9rem;
     text-align: center;
+  }
+
+  & > div:nth-child(2) {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    color: rgb(255, 180, 58);
+    font-size: 1.2rem;
+    font-weight: 500;
   }
 `;
 
@@ -63,7 +72,7 @@ const LinkStyle = styled(Link)`
   display: block;
   margin-top: 0.7rem;
   text-align: center;
-  padding: 0.4rem 0.7rem;
+  padding: 0.6rem 0.7rem;
   color: #262328;
   background: #ffb43a;
   font-size: 0.9rem;
