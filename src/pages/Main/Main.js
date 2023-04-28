@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { MainContainer } from './main-styled';
-import BigSlider from '../../components/slides/BigSlider';
 import { getRelease, getReserve } from '../../apis/tmdbApi';
+import BigSlider from '../../components/slides/BigSlider';
 import WidthSlider from '../../components/slides/WidthSlider';
+import Footer from '../../components/footer/Footer';
 
 const Main = () => {
   const [popular, setPopular] = useState([]);
@@ -28,6 +29,7 @@ const Main = () => {
       <BigSlider movies={popular} />
       <WidthSlider title={'최신영화'} movies={latest} reserve={true} />
       <WidthSlider title={'개봉예정'} movies={reserve} reserve={false} />
+      <Footer />
     </MainContainer>
   );
 };
