@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
@@ -9,6 +9,11 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 300;
     box-sizing: border-box;
     color: #fff;
+    ${props =>
+      props.popup &&
+      css`
+        overflow: hidden;
+      `}
   }
   a {
     text-decoration:none;
