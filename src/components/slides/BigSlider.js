@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { SliderStyled, SlideImage } from './bigSlider-styled';
+import { SliderStyled, Slide, LinkStyle } from './bigSlider-styled';
+import { Link } from 'react-router-dom';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -15,7 +16,7 @@ const BigSlider = ({ movies }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 5000
   };
 
@@ -26,7 +27,11 @@ const BigSlider = ({ movies }) => {
   return (
     <SliderStyled {...settings}>
       {slides.map(slide => (
-        <SlideImage image={IMAGE_URL + slide.poster_path} key={slide.id} />
+        <div key={slide.id}>
+          <Slide image={IMAGE_URL + slide.poster_path}>
+            <Link to={`/movie/detail/${slide.id}`} />
+          </Slide>
+        </div>
       ))}
     </SliderStyled>
   );

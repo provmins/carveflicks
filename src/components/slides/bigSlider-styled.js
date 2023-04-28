@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 
 const SliderStyled = styled(Slider)`
   .slick-dots {
@@ -22,9 +23,20 @@ const SliderStyled = styled(Slider)`
       }
     }
   }
+
+  .slick-current {
+    a {
+      display: block;
+      position: absolute;
+      top: 0;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 
-const SlideImage = styled.div`
+const Slide = styled.div`
   width: 100%;
   height: 0;
   background-size: cover;
@@ -36,4 +48,6 @@ const SlideImage = styled.div`
   `}
 `;
 
-export { SliderStyled, SlideImage };
+const LinkStyle = styled(Link)``;
+
+export { SliderStyled, Slide, LinkStyle };

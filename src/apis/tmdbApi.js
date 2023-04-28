@@ -7,8 +7,9 @@ const API_URL = process.env.REACT_APP_TMDB_API_URL;
 
 export const getMoive = async movie => {
   try {
-    const response = await axios.get(`${API_URL}/search/movie?${API_KEY}&query=${movie}`);
+    const response = await axios.get(`${API_URL}/movie/${movie}?${API_KEY}&language=ko`);
     const data = response.data;
+    console.log(data);
     return data;
   } catch (err) {
     console.log(err);
