@@ -27,7 +27,6 @@ export const getRelease = async () => {
       );
       response.data.results.forEach(movie => data.push(movie));
     }
-
     return data.filter(data => dayDiff(data.release_date) > 0);
   } catch (err) {
     console.log(err);
@@ -42,4 +41,14 @@ export const getReserve = async () => {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const getImage = async movie => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/movie/${movie}/images?${API_KEY}&language=ko&region=KR`
+    );
+    const data = response.data;
+    return data;
+  } catch (err) {}
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SliderStyled, Slide, LinkStyle } from './bigSlider-styled';
+import { SliderStyled, Slide } from './bigSlider-styled';
 import { Link } from 'react-router-dom';
 
 import 'slick-carousel/slick/slick.css';
@@ -27,11 +27,9 @@ const BigSlider = ({ movies }) => {
   return (
     <SliderStyled {...settings}>
       {slides.map(slide => (
-        <div key={slide.id}>
-          <Slide image={IMAGE_URL + slide.poster_path}>
-            <Link to={`/movie/detail/${slide.id}`} />
-          </Slide>
-        </div>
+        <Slide image={IMAGE_URL + slide.poster_path} key={slide.id}>
+          <Link to={`/movie/detail/${slide.id}`} />
+        </Slide>
       ))}
     </SliderStyled>
   );

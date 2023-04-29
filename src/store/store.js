@@ -1,12 +1,14 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import popupReducer from './reducer/popupSlice';
 import userReducer from './reducer/userSlice';
+import loaderReducer from './reducer/loaderSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
 const rootReducer = combineReducers({
   popup: popupReducer,
-  user: userReducer
+  user: userReducer,
+  loader: loaderReducer
 });
 
 const persistConfig = {
