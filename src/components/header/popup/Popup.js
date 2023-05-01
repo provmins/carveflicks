@@ -31,7 +31,7 @@ const Popup = () => {
         </PTopBox>
         <PBottomBox>
           <ul>
-            {cookies.token ? (
+            {cookies.token && cookies.token !== 'undefined' ? (
               <li>
                 <Link
                   to="/"
