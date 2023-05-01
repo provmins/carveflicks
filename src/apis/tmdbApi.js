@@ -32,7 +32,7 @@ export const getReserve = async () => {
   try {
     const response = await axios.get(`${API_URL}/movie/upcoming?${API_KEY}&language=ko&region=KR`);
     const data = response.data.results;
-    return data;
+    return data.filter(data => dayDiff(data.release_date) < 0);
   } catch (err) {}
 };
 
