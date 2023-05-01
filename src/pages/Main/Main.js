@@ -3,7 +3,6 @@ import { MainContainer } from './main-styled';
 import { getRelease, getReserve } from '../../apis/tmdbApi';
 import BigSlider from '../../components/slides/BigSlider';
 import WidthSlider from '../../components/slides/WidthSlider';
-import Footer from '../../components/footer/Footer';
 import { useDispatch } from 'react-redux';
 import { loading, loaded } from '../../store/reducer/loaderSlice';
 
@@ -34,14 +33,13 @@ const Main = () => {
       } catch (err) {}
     };
     setMovies();
-  }, []);
+  }, [dispatch]);
 
   return (
     <MainContainer>
       <BigSlider movies={popular} />
       <WidthSlider title={'최신영화'} movies={latest} reserve={true} />
       <WidthSlider title={'개봉예정'} movies={reserve} reserve={false} />
-      <Footer />
     </MainContainer>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   SliderContainer,
   SliderStyled,
@@ -13,12 +13,7 @@ import 'swiper/css';
 import { dayDiff } from '../../utils/date';
 
 const WidthSlider = ({ title, movies, reserve }) => {
-  const [slides, setSlides] = useState([]);
   const IMAGE_URL = process.env.REACT_APP_TMDB_IMAGE_URL;
-
-  useEffect(() => {
-    setSlides(movies);
-  }, [movies]);
 
   return (
     <SliderContainer>
@@ -32,7 +27,7 @@ const WidthSlider = ({ title, movies, reserve }) => {
         }}
         modules={[FreeMode, Pagination]}
       >
-        {slides.map(slide => (
+        {movies.map(slide => (
           <SlideList key={slide.id}>
             <Link to={`/movie/detail/${slide.id}`}>
               <SlideImage image={IMAGE_URL + slide.poster_path}>

@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import store from './store/store';
+import { ScrollRestoration } from './components/ScrollRestoration';
 
 const persistor = persistStore(store);
 
@@ -17,6 +18,7 @@ root.render(
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <BrowserRouter>
+          <ScrollRestoration />
           <App />
         </BrowserRouter>
       </PersistGate>

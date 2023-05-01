@@ -9,7 +9,6 @@ export const getMoive = async movie => {
   try {
     const response = await axios.get(`${API_URL}/movie/${movie}?${API_KEY}&language=ko`);
     const data = response.data;
-    console.log(data);
     return data;
   } catch (err) {
     console.log(err);
@@ -43,12 +42,28 @@ export const getReserve = async () => {
   }
 };
 
-export const getImage = async movie => {
+export const getPoster = async movie => {
   try {
     const response = await axios.get(
       `${API_URL}/movie/${movie}/images?${API_KEY}&language=ko&region=KR`
     );
     const data = response.data;
     return data;
+  } catch (err) {}
+};
+
+export const getVideos = async movie => {
+  try {
+    const response = await axios.get(`${API_URL}/movie/${movie}/videos?${API_KEY}&language=ko`);
+    const data = response.data;
+    return data.results[0];
+  } catch (err) {}
+};
+
+export const getCredit = async movie => {
+  try {
+    const response = await axios.get(`${API_URL}/movie/${movie}/credits?${API_KEY}&language=ko`);
+    const data = response.data;
+    return data.cast.slice(0, 10);
   } catch (err) {}
 };

@@ -5,5 +5,21 @@ import imgInfo from './info.png';
 import imgRegister from './register.png';
 import imgLogin from './login.png';
 import imgCrown from './crown.png';
+import imgTicket from './ticket.png';
+import imgWatch from './watch.png';
+import imgArrowDown from './arrow-down.png';
+import imgArrowUp from './arrow-up.png';
 
-export { imgLogo, imgButton, imgClose, imgInfo, imgRegister, imgLogin, imgCrown };
+export {
+  imgLogo,
+  imgButton,
+  imgClose,
+  imgInfo,
+  imgRegister,
+  imgLogin,
+  imgCrown,
+  imgTicket,
+  imgWatch,
+  imgArrowDown,
+  imgArrowUp
+};

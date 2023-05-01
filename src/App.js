@@ -1,4 +1,5 @@
 import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 import GlobalFonts from './styles/GlobalFonts';
 import GlobalStyles from './styles/GlobalStyles';
 import { ROUTES } from './routes/routes';
@@ -16,6 +17,7 @@ function App() {
       <GlobalFonts />
       <Header />
       {ROUTES()}
+      <Footer />
     </>
   );
 }
