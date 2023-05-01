@@ -10,9 +10,7 @@ export const getMoive = async movie => {
     const response = await axios.get(`${API_URL}/movie/${movie}?${API_KEY}&language=ko`);
     const data = response.data;
     return data;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 export const getRelease = async () => {
@@ -27,9 +25,7 @@ export const getRelease = async () => {
       response.data.results.forEach(movie => data.push(movie));
     }
     return data.filter(data => dayDiff(data.release_date) > 0);
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 export const getReserve = async () => {
@@ -37,9 +33,7 @@ export const getReserve = async () => {
     const response = await axios.get(`${API_URL}/movie/upcoming?${API_KEY}&language=ko&region=KR`);
     const data = response.data.results;
     return data;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 export const getPoster = async movie => {

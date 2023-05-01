@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Button, GalleryBox, GalleryContainer, GalleryImage } from './imageGallery-styled';
-import { useEffect } from 'react';
 
 const ImageGallery = ({ images }) => {
   const IMAGE_URL = process.env.REACT_APP_TMDB_IMAGE_URL;
