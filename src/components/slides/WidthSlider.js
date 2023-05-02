@@ -8,12 +8,16 @@ import {
   LinkStyle
 } from './widthSlider-styled';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { isTicketOpen } from '../../store/reducer/popupSlice';
+import { dayDiff } from '../../utils/date';
+
 import { FreeMode, Pagination } from 'swiper';
 import 'swiper/css';
-import { dayDiff } from '../../utils/date';
 
 const WidthSlider = ({ title, movies, reserve }) => {
   const IMAGE_URL = process.env.REACT_APP_TMDB_IMAGE_URL;
+  const dispatch = useDispatch();
 
   return (
     <SliderContainer>
@@ -39,7 +43,11 @@ const WidthSlider = ({ title, movies, reserve }) => {
                 </p>
               </SlideContent>
             </Link>
-            {reserve && <LinkStyle to="/">예매하기</LinkStyle>}
+            {reserve && (
+              <LinkStyle to={`/ticket/${slide.id}`} onClick={() => dispatch(isTicketOpen())}>
+                예매하기
+              </LinkStyle>
+            )}
           </SlideList>
         ))}
       </SliderStyled>

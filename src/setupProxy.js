@@ -25,4 +25,11 @@ module.exports = function (app) {
       changeOrigin: true
     })
   );
+  app.use(
+    '/cinema',
+    createProxyMiddleware({
+      target: SERVER_URL,
+      changeOrigin: true
+    })
+  );
 };

@@ -5,7 +5,8 @@ const initialState = {
   slide: {
     open: false,
     select: 0
-  }
+  },
+  ticket: false
 };
 
 const popupSlice = createSlice({
@@ -18,10 +19,13 @@ const popupSlice = createSlice({
     isSlideOpen: (state, action) => {
       state.slide.open = !state.slide.open;
       state.slide.select = action.payload.number;
+    },
+    isTicketOpen: state => {
+      state.ticket = !state.ticket;
     }
   }
 });
 
-export const { isOpen, isSlideOpen } = popupSlice.actions;
+export const { isOpen, isSlideOpen, isTicketOpen } = popupSlice.actions;
 
 export default popupSlice.reducer;
