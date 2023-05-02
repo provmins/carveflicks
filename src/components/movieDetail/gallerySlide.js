@@ -16,12 +16,12 @@ const GallerySlide = ({ images }) => {
   const swiper = useRef(null);
 
   useEffect(() => {
-    swiper.current.swiper.slideTo(select);
+    swiper.current.swiper.slideToLoop(select);
   }, [select]);
 
   return (
     <GalleryContainer active={open}>
-      <button onClick={() => dispatch(isSlideOpen({ number: 0 }))} />
+      <button onClick={() => dispatch(isSlideOpen({ number: select }))} />
       <SliderStyled
         slidesPerView={1}
         loop={true}
