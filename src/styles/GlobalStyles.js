@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     color: #fff;
     ${props =>
-      (props.popup || props.loader) &&
+      (props.popup || props.loader || props.slide) &&
       css`
         overflow: hidden;
       `}

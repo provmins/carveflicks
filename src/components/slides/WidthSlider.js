@@ -22,9 +22,6 @@ const WidthSlider = ({ title, movies, reserve }) => {
         slidesPerView={2.2}
         spaceBetween={20}
         freeMode={true}
-        pagination={{
-          clickable: true
-        }}
         modules={[FreeMode, Pagination]}
       >
         {movies.map(slide => (

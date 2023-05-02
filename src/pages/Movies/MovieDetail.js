@@ -23,6 +23,7 @@ import { imgCrown, imgTicket, imgWatch } from '../../assets/images';
 import PosterGallery from '../../components/gallery/ImageGallery';
 
 import ReactPlayer from 'react-player/youtube';
+import GallerySlide from '../../components/gallery/gallerySlide';
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -154,6 +155,7 @@ const MovieDetail = () => {
         <p>스틸컷</p>
         <PosterGallery images={posterList} />
       </StillCutBox>
+      <GallerySlide images={posterList} />
     </MovieDetailContainer>
   );
 };

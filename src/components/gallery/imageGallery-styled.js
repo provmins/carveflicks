@@ -8,16 +8,7 @@ const GalleryContainer = styled.div`
   }
 `;
 
-const GalleryBox = styled.div`
-  /* max-height: 20rem;
-  overflow: hidden;
-  ${({ open }) =>
-    open &&
-    css`
-      max-height: initial;
-      overflow: initial;
-    `} */
-`;
+const GalleryBox = styled.div``;
 
 const GalleryImage = styled.div`
   flex-basis: 48%;

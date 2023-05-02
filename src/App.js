@@ -9,11 +9,12 @@ import { Loader } from './components/loader/Loader';
 function App() {
   const open = useSelector(state => state.popup.open);
   const loader = useSelector(state => state.loader.loading);
+  const slideOpen = useSelector(state => state.popup.slide.open);
 
   return (
     <>
       {loader && <Loader />}
-      <GlobalStyles popup={open} loader={loader} />
+      <GlobalStyles popup={open} loader={loader} slide={slideOpen} />
       <GlobalFonts />
       <Header />
       {ROUTES()}
