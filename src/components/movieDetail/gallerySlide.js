@@ -16,7 +16,7 @@ const GallerySlide = ({ images }) => {
   const swiper = useRef(null);
 
   useEffect(() => {
-    swiper.current.swiper.slideToLoop(select);
+    if (images.length !== 0) swiper.current.swiper.slideToLoop(select, 100, false);
   }, [select]);
 
   return (

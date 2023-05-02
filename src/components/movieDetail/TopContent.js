@@ -27,18 +27,20 @@ const TopContent = ({ posters, movies }) => {
 
   return (
     <TopContents>
-      {posters.length !== 0 && movies.length !== 0 && (
+      {posters.length !== 0 && (
+        <TopPoster
+          image={
+            IMAGE_URL +
+            (posters.length > 1
+              ? posters[1].file_path
+              : posters.length === 0
+              ? ''
+              : posters[0].file_path)
+          }
+        />
+      )}
+      {movies.length !== 0 && (
         <>
-          <TopPoster
-            image={
-              IMAGE_URL +
-              (posters.length > 1
-                ? posters[1].file_path
-                : posters.length === 0
-                ? ''
-                : posters[0].file_path)
-            }
-          />
           <TopTitle>
             <TextGenres>
               {movies.genres.map(({ id, name }) => (
