@@ -31,7 +31,6 @@ const MovieDetail = () => {
         setPosterList(posterData.posters);
         setCredit(creditData);
         setVideo(videoData);
-
         dispatch(loaded());
       } catch (err) {}
     };
@@ -54,10 +53,17 @@ const MovieDetail = () => {
           />
         </TrailerBox>
       )}
-      <StillCutBox>
-        <p>스틸컷</p>
-        <PosterGallery images={posterList} />
-      </StillCutBox>
+      {posterList.length !== 0 && (
+        <StillCutBox>
+          {posterList.posters.length !== 0 && (
+            <>
+              <p>스틸컷</p>
+              <PosterGallery images={posterList} />
+            </>
+          )}
+        </StillCutBox>
+      )}
+
       <GallerySlide images={posterList} />
     </MovieDetailContainer>
   );

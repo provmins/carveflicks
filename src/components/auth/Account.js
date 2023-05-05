@@ -7,12 +7,11 @@ import {
   Button
 } from './account-styled';
 import { imgRegister, imgLogin } from '../../assets/images';
-import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { currentUser } from '../../store/reducer/userSlice';
-import { account } from '../../apis/serverApi';
+import { getAccount } from '../../apis/serverApi';
 
 const Account = ({ flag }) => {
   const [cookies, setCookie] = useCookies(['token']);
@@ -143,7 +142,7 @@ const Account = ({ flag }) => {
   // 회원가입, 로그인 기능
   const onSubmit = async params => {
     try {
-      const response = await account(params, form.email.value, form.password.value);
+      const response = await getAccount(params, form.email.value, form.password.value);
       const { accessToken, user } = response.data;
       if (params === 'login') {
         setCookie('token', accessToken, { path: '/' });
