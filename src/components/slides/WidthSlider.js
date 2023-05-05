@@ -28,7 +28,7 @@ const WidthSlider = ({ title, movies, reserve }) => {
           <SlideList key={slide.id}>
             <Link to={`/movie/detail/${slide.id}`}>
               <SlideImage image={IMAGE_URL + slide.poster_path}>
-                <div>{`${slide.release_date} 개봉`}</div>
+                <div>{`${slide.release_date.replace(/-/gi, '.')} 개봉`}</div>
                 {reserve || <div>{`D${dayDiff(slide.release_date)}`}</div>}
               </SlideImage>
               <SlideContent>

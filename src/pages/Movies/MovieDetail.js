@@ -13,8 +13,8 @@ import GallerySlide from '../../components/movieDetail/gallerySlide';
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const [movieInfo, setMovieInfo] = useState([]);
-  const [posterList, setPosterList] = useState([]);
+  const [movieInfo, setMovieInfo] = useState();
+  const [posterList, setPosterList] = useState();
   const [credit, setCredit] = useState([]);
   const [video, setVideo] = useState([]);
   const dispatch = useDispatch();
@@ -39,32 +39,31 @@ const MovieDetail = () => {
 
   return (
     <MovieDetailContainer>
-      <TopContent posters={posterList} movies={movieInfo} />
-      <BottomContent movies={movieInfo} credit={credit} />
-      {video !== undefined && (
-        <TrailerBox>
-          <p>예고편</p>
-          <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${video.key}`}
-            width="100%"
-            height="100%"
-            controls={true}
-            muted={true}
-          />
-        </TrailerBox>
-      )}
-      {posterList.length !== 0 && (
-        <StillCutBox>
-          {posterList.posters.length !== 0 && (
-            <>
-              <p>스틸컷</p>
-              <PosterGallery images={posterList} />
-            </>
-          )}
-        </StillCutBox>
-      )}
+      {movieInfo && (
+        <>
+          <TopContent posters={posterList} movies={movieInfo} />
+          <BottomContent movies={movieInfo} credit={credit} />
 
-      <GallerySlide images={posterList} />
+          {video !== undefined && (
+            <TrailerBox>
+              <p>예고편</p>
+              <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${video.key}`}
+                width="100%"
+                height="100%"
+                controls={true}
+                muted={true}
+              />
+            </TrailerBox>
+          )}
+
+          <StillCutBox>
+            <p>스틸컷</p>
+            <PosterGallery images={posterList} />
+          </StillCutBox>
+          <GallerySlide images={posterList} />
+        </>
+      )}
     </MovieDetailContainer>
   );
 };
