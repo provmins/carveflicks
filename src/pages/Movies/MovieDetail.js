@@ -39,11 +39,10 @@ const MovieDetail = () => {
 
   return (
     <MovieDetailContainer>
-      {movieInfo && (
+      {posterList && (
         <>
           <TopContent posters={posterList} movies={movieInfo} />
           <BottomContent movies={movieInfo} credit={credit} />
-
           {video !== undefined && (
             <TrailerBox>
               <p>예고편</p>
@@ -56,7 +55,6 @@ const MovieDetail = () => {
               />
             </TrailerBox>
           )}
-
           <StillCutBox>
             <p>스틸컷</p>
             <PosterGallery images={posterList} />

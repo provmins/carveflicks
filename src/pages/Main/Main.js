@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { MainContainer } from './main-styled';
 import { getRelease, getReserve } from '../../apis/tmdbApi';
+import { loading, loaded } from '../../store/reducer/loaderSlice';
 import BigSlider from '../../components/slides/BigSlider';
 import WidthSlider from '../../components/slides/WidthSlider';
-import { useDispatch } from 'react-redux';
-import { loading, loaded } from '../../store/reducer/loaderSlice';
+import Header from '../../components/header/Header';
 
 const Main = () => {
   const [popular, setPopular] = useState([]);
@@ -36,11 +37,14 @@ const Main = () => {
   }, [dispatch]);
 
   return (
-    <MainContainer>
-      <BigSlider movies={popular} />
-      <WidthSlider title={'최신영화'} movies={latest} reserve={true} />
-      <WidthSlider title={'개봉예정'} movies={reserve} reserve={false} />
-    </MainContainer>
+    <>
+      <Header />
+      <MainContainer>
+        <BigSlider movies={popular} />
+        <WidthSlider title={'최신영화'} movies={latest} reserve={true} />
+        <WidthSlider title={'개봉예정'} movies={reserve} reserve={false} />
+      </MainContainer>
+    </>
   );
 };
 

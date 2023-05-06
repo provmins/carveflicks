@@ -39,7 +39,7 @@ const PopupHeader = styled.div`
   }
 
   img {
-    width: 22px;
+    width: 18px;
   }
 `;
 
@@ -49,6 +49,7 @@ const PTopBox = styled.div`
   justify-content: space-between;
   ul {
     display: flex;
+    align-items: center;
     li:not(:last-child) {
       margin-right: 15px;
     }

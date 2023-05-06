@@ -9,6 +9,8 @@ import imgTicket from './ticket.png';
 import imgWatch from './watch.png';
 import imgArrowDown from './arrow-down.png';
 import imgArrowUp from './arrow-up.png';
+import imgArrowLeft from './arrow-left.png';
+import imgSearch from './search.png';
 
 export {
   imgLogo,
@@ -21,5 +23,7 @@ export {
   imgTicket,
   imgWatch,
   imgArrowDown,
-  imgArrowUp
+  imgArrowUp,
+  imgArrowLeft,
+  imgSearch
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PopupContainer, PopupHeader, PopupContent, PTopBox, PBottomBox } from './popup-styled';
-import { imgInfo } from '../../../assets/images';
+import { imgInfo, imgSearch } from '../../../assets/images';
 import { useDispatch, useSelector } from 'react-redux';
 import { isOpen } from '../../../store/reducer/popupSlice';
 import { removeUser } from '../../../store/reducer/userSlice';
@@ -19,6 +19,11 @@ const Popup = () => {
         <PTopBox>
           <p>{email !== '' ? `${email}님 환영합니다 :)` : '로그인 해주세요 :)'}</p>
           <ul>
+            <li>
+              <Link to="/search" onClick={() => dispatch(isOpen())}>
+                <img src={imgSearch} alt="" />
+              </Link>
+            </li>
             <li>
               <Link to="/">
                 <img src={imgInfo} alt="" />

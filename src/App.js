@@ -1,4 +1,3 @@
-import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import GlobalFonts from './styles/GlobalFonts';
 import GlobalStyles from './styles/GlobalStyles';
@@ -16,9 +15,7 @@ function App() {
       {loader && <Loader />}
       <GlobalStyles popup={open} loader={loader} slide={slideOpen} />
       <GlobalFonts />
-      <Header />
       {ROUTES()}
-      <Footer />
     </>
   );
 }

@@ -61,3 +61,21 @@ export const getCredit = async movie => {
     return data.cast.slice(0, 10);
   } catch (err) {}
 };
+
+export const getSearch = async movie => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/search/movie?${API_KEY}&language=ko&query=${movie}`
+    );
+    const data = response.data;
+    return data;
+  } catch (err) {}
+};
+
+export const getTopRate = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/movie/top_rated?${API_KEY}&language=ko&region=kr`);
+    const data = response.data;
+    return data.results.slice(0, 10);
+  } catch (err) {}
+};
